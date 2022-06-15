@@ -8,25 +8,25 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type db struct {
+type Db struct {
 	uri  string
 	name string
 }
 
-type env struct {
+type Env struct {
 	defaultLang   string
 	appListenPort string
-	db            db
+	db            Db
 	consoleLevel  string
 }
 
-var environment env
+var environment Env
 
 func setNewEnvironment() {
-	environment = env{
+	environment = Env{
 		defaultLang:   os.Getenv("DEFAULT_LANG"),
 		appListenPort: os.Getenv("APP_LISTEN_PORT"),
-		db: db{
+		db: Db{
 			uri:  os.Getenv("MONGO_URI"),
 			name: os.Getenv("DBNAME"),
 		},
@@ -34,30 +34,30 @@ func setNewEnvironment() {
 	}
 }
 
-func Initialize() (env, error) {
-	if environment != (env{}) {
+func Initialize() (*Env, error) {
+	if environment != (Env{}) {
 		log.Fatal("[config] already initialized")
-		return env{}, errors.New("[config] intialized already")
+		return &Env{}, errors.New("[config] intialized already")
 	}
 
 	err := godotenv.Load()
 
 	if err != nil {
 		log.Fatal("[config] error when loading .env file")
-		return env{}, errors.New("[config] error when loading .env file")
+		return &Env{}, errors.New("[config] error when loading .env file")
 	}
 
 	log.Print("[config] Initialized .env file")
 
 	setNewEnvironment()
 
-	return environment, nil
+	return &environment, nil
 }
 
-func Get() (env, error) {
-	if environment == (env{}) {
-		return env{}, errors.New("[config] not initialized")
+func Get() (*Env, error) {
+	if environment == (Env{}) {
+		return &Env{}, errors.New("[config] not initialized")
 	}
 
-	return environment, nil
+	return &environment, nil
 }
