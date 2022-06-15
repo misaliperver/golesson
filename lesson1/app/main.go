@@ -1,7 +1,9 @@
 package main
 
+import "github.com/misaliperver/golesson/lesson1/config"
+
 func main() {
-	print("mongouri", mongoUri)
+	config.Initialize()
 
 	// now do something with s3 or whatever
 }

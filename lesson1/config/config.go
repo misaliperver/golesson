@@ -19,12 +19,14 @@ type env struct {
 	consoleLevel  string
 }
 
-func initialize() env {
+func Initialize() env {
 	err := godotenv.Load()
 
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
+	log.Print("Loaded .env file")
 
 	return env{
 		defaultLang:   os.Getenv("DEFAULT_LANG"),
