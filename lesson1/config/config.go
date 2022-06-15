@@ -56,7 +56,7 @@ func Initialize() (Env, error) {
 
 func Get() (Env, error) {
 	if environment == (Env{}) {
-		return Env{}, errors.New("[config] not initialized")
+		panic("[config] not initialized")
 	}
 
 	return environment, nil
