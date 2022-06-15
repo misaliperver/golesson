@@ -9,55 +9,55 @@ import (
 )
 
 type Db struct {
-	uri  string
-	name string
+	Uri  string
+	Name string
 }
 
 type Env struct {
-	defaultLang   string
-	appListenPort string
-	db            Db
-	consoleLevel  string
+	DefaultLang   string
+	AppListenPort string
+	Db            Db
+	ConsoleLevel  string
 }
 
 var environment Env
 
 func setNewEnvironment() {
 	environment = Env{
-		defaultLang:   os.Getenv("DEFAULT_LANG"),
-		appListenPort: os.Getenv("APP_LISTEN_PORT"),
-		db: Db{
-			uri:  os.Getenv("MONGO_URI"),
-			name: os.Getenv("DBNAME"),
+		DefaultLang:   os.Getenv("DEFAULT_LANG"),
+		AppListenPort: os.Getenv("APP_LISTEN_PORT"),
+		Db: Db{
+			Uri:  os.Getenv("MONGO_URI"),
+			Name: os.Getenv("DBNAME"),
 		},
-		consoleLevel: os.Getenv("CONSOLE_LEVEL"),
+		ConsoleLevel: os.Getenv("CONSOLE_LEVEL"),
 	}
 }
 
-func Initialize() (*Env, error) {
+func Initialize() (Env, error) {
 	if environment != (Env{}) {
 		log.Fatal("[config] already initialized")
-		return &Env{}, errors.New("[config] intialized already")
+		return Env{}, errors.New("[config] intialized already")
 	}
 
 	err := godotenv.Load()
 
 	if err != nil {
 		log.Fatal("[config] error when loading .env file")
-		return &Env{}, errors.New("[config] error when loading .env file")
+		return Env{}, errors.New("[config] error when loading .env file")
 	}
 
 	log.Print("[config] Initialized .env file")
 
 	setNewEnvironment()
 
-	return &environment, nil
+	return environment, nil
 }
 
-func Get() (*Env, error) {
+func Get() (Env, error) {
 	if environment == (Env{}) {
-		return &Env{}, errors.New("[config] not initialized")
+		return Env{}, errors.New("[config] not initialized")
 	}
 
-	return &environment, nil
+	return environment, nil
 }
