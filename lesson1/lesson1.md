@@ -5,6 +5,7 @@ We will create dotenv config, connect to mongo db, and add mongo crud methods.
 ## Note
 - Define struct name and keys' first character  as upper case
 - Define Initialize and Get function
+- If you add and read new package, you must use git add before you use
 - runtime:
 - - first of all main.go init package processed
 - - then main.go init function processed
