@@ -17,7 +17,7 @@ type Todo struct {
 	Status bool               `json:"status,omitempty" validate:"required"`
 }
 
-var todoCollection *mongo.Collection = db.GetCollection(db.DB, "todos")
+var todoCollection *mongo.Collection = db.GetCollection("todos")
 
 func Create(title string, status bool) (*mongo.InsertOneResult, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)

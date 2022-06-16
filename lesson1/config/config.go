@@ -59,5 +59,7 @@ func Get() (Env, error) {
 		panic("[config] not initialized")
 	}
 
+	log.Println("[config] Get() successfully")
+
 	return environment, nil
 }

@@ -13,7 +13,7 @@ import (
 var ctx = context.TODO()
 
 //Client instance
-var DB *mongo.Client = ConnectDB()
+var DB mongo.Client
 
 func ConnectDB() *mongo.Client {
 	env, errEnv := config.Get()
@@ -38,12 +38,18 @@ func ConnectDB() *mongo.Client {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	log.Print("Connected to MongoDB")
-	return client
+
+	DB = *client
+
+	return &DB
 }
 
 //getting database collections
-func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-	collection := client.Database("golangAPI").Collection(collectionName)
+func GetCollection(collectionName string) *mongo.Collection {
+	println("Getting collection: " + collectionName)
+
+	collection := DB.Database("golesson").Collection(collectionName)
 	return collection
 }

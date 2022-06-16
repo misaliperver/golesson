@@ -1,12 +1,14 @@
 package main
 
 import (
-	"github.com/misaliperver/golesson/lesson1/config"
-	"github.com/misaliperver/golesson/lesson1/models"
+	config "github.com/misaliperver/golesson/lesson1/config"
+	db "github.com/misaliperver/golesson/lesson1/db"
+	models "github.com/misaliperver/golesson/lesson1/models"
 )
 
 func init() {
 	config.Initialize()
+	db.ConnectDB()
 }
 
 func main() {
