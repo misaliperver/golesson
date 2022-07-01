@@ -1,6 +1,8 @@
 # GOLESSON/lesson3
 
-We will change dotenv config, connect to mongo db with pointer client, repository pattern created for db crud, bootstrap added for genereted random data with channel (optional: i would to know what is the channel), for practice that two types (channel and classic iteration)
+I continue to use init function for env and mongo client function creation, because i need to initialization configs for app functionality.
+
+
 
 ## Note
 - Channel defines with make function for allocation
