@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	helper "github.com/misaliperver/golesson/lesson2/helpers"
+	"github.com/misaliperver/golesson/lesson2/bootstrap/helpers"
 	"github.com/misaliperver/golesson/lesson2/models/task"
 )
 
@@ -14,9 +14,9 @@ func generareNewTask(c chan *task.Task) {
 	for i := 0; i < generatedTaskCount; i++ {
 		c <- &task.Task{
 			Title:       "Task " + strconv.Itoa(i),
-			Code:        helper.RandomStringRunes(10),
-			Description: helper.randStringRunes(10),
-			Completed:   helper.randBool(),
+			Code:        helpers.RandStringRunes(10),
+			Description: helpers.RandStringRunes(10),
+			Completed:   helpers.RandBool(),
 		}
 	}
 
