@@ -34,32 +34,37 @@ func setNewEnvironment() {
 	}
 }
 
-func Initialize() (Env, error) {
-	if *environment != (Env{}) {
+func Initialize() (*Env, error) {
+	if environment != nil {
 		log.Fatal("[config] already initialized")
-		return Env{}, errors.New("[config] intialized already")
+		return nil, errors.New("[config] intialized already")
 	}
 
 	err := godotenv.Load()
 
 	if err != nil {
-		log.Fatal("[config] error when loading .env file")
-		return Env{}, errors.New("[config] error when loading .env file")
+		log.Fatal("[config] error when loading .env file", err)
+		return nil, errors.New("[config] error when loading .env file")
 	}
 
 	log.Print("[config] Initialized .env file")
 
 	setNewEnvironment()
 
-	return *environment, nil
+	return environment, nil
 }
 
-func Get() (Env, error) {
-	if *environment == (Env{}) {
+func Get() (*Env, error) {
+	if environment == nil {
 		panic("[config] not initialized")
 	}
 
 	log.Println("[config] Get() successfully")
 
-	return *environment, nil
+	return environment, nil
+}
+
+func init() {
+	println("[config] init()")
+	Initialize()
 }
