@@ -35,7 +35,7 @@ type Question struct {
 }
 
 var (
-	l                  = logger.NewLogger("question", "models/question.go")
+	l                  = logger.NewLogger()
 	collection         *mongo.Collection
 	questionRepository *repository.MongoRepository
 )

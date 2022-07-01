@@ -14,7 +14,7 @@ var (
 	URI  string
 	NAME string
 
-	l = logger.NewLogger("db", "db/db.go")
+	l = logger.NewLogger()
 
 	/* Used to create a singleton object of MongoDB client.
 	Initialized and exposed through  GetMongoClient().*/

@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	l = logger.NewLogger("useApi", "api/user/routes.go")
+	l = logger.NewLogger()
 )
 
 func Initialize(parrentGroup fiber.Router) {

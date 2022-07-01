@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	l = logger.NewLogger("questionApi", "api/question/routes.go")
+	l = logger.NewLogger()
 )
 
 func main() {

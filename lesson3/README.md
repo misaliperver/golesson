@@ -1,13 +1,14 @@
 # GOLESSON/lesson3
 
-I continue to use init function for env and mongo client function creation, because i need to initialization configs for app functionality.
+I continue to use init function for env and mongo client function creation, because i need to initialization configs for app functionality. Created
 
 
 
 ## Note
-- Channel defines with make function for allocation
-- Pointer reduce to memory footprint, so you should use with struct type as specially function side and return values
-- You preffer to use struct functions for manipulation your sturct data, find change sort or another think
+- Go Fork dos not provide share memory, all child app uses allocated memory for themselves.
+- Go does not provide runtime create func.
+- You can use **any** argument for your func.
+- If you want to use dynamicaly count argument (...args), define that func test(msg ...string)
 
 While tasks generated before, you dont create new data
 ```

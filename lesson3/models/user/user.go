@@ -1,7 +1,6 @@
 package user
 
 import (
-	"log"
 	"time"
 
 	"github.com/misaliperver/golesson/lesson3/db"
@@ -23,13 +22,13 @@ type User struct {
 }
 
 var (
-	l              = logger.NewLogger("user", "models/user.go")
+	l              = logger.NewLogger()
 	collection     *mongo.Collection
 	userRepository *repository.MongoRepository
 )
 
 func init() {
-	log.Println("[models/user.go] init()")
+	l.Debug("initialized.")
 	collection = db.GetCollection("user")
 	userRepository = repository.NewMongoRepository("user", collection)
 }

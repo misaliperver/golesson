@@ -43,18 +43,18 @@ func setNewEnvironment() {
 
 func Initialize() (*Env, error) {
 	if environment != nil {
-		log.Fatal("[config] already initialized")
+		log.Fatal("CONF config.Initialize() - already initialized")
 		return nil, errors.New("[config] intialized already")
 	}
 
 	err := godotenv.Load()
 
 	if err != nil {
-		log.Fatal("[config] error when loading .env file", err)
-		return nil, errors.New("[config] error when loading .env file")
+		log.Fatal("CONF config.Initialize() - error when loading .env file", err)
+		return nil, errors.New("config error when loading .env file")
 	}
 
-	log.Print("[config] Initialized .env file")
+	log.Println("CONF config.Initialize() - Initialized .env file")
 
 	setNewEnvironment()
 
@@ -63,15 +63,15 @@ func Initialize() (*Env, error) {
 
 func Get() (*Env, error) {
 	if environment == nil {
-		panic("[config] not initialized")
+		panic("config not initialized")
 	}
 
-	log.Println("[config] Get() successfully")
+	log.Println("CONF config.Get() - successfully")
 
 	return environment, nil
 }
 
 func init() {
-	println("[config] init()")
+	log.Println("CONF config.init() - initialized.")
 	Initialize()
 }
