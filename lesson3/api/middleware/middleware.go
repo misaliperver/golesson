@@ -17,3 +17,7 @@ var (
 func NotFound(c *fiber.Ctx) error {
 	return c.Status(404).SendString("Not found")
 }
+
+func CreateUser(c *fiber.Ctx) error {
+	return c.Status(200).SendString("Create user")
+}
