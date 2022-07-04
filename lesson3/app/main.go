@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/misaliperver/golesson/lesson3/api"
-	"github.com/misaliperver/golesson/lesson3/api/middleware"
+	middleware "github.com/misaliperver/golesson/lesson3/api/_middleware"
 	"github.com/misaliperver/golesson/lesson3/config"
 	"github.com/misaliperver/golesson/lesson3/lib/logger"
 	"github.com/misaliperver/golesson/lesson3/models/user"

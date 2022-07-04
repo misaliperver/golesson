@@ -46,3 +46,16 @@ Generate new data and insert to mongo
 - we will try to add async and gorotuine
 
 
+
+## if you use id parameter
+```
+    objId, err := primitive.ObjectIDFromHex(c.Params("id"))
+    
+    if err != nil {
+        return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+            "success": false,
+            "message": "Catchphrase not found",
+            "error":   err,
+        })
+    }
+```
